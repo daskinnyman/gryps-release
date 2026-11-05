@@ -43,7 +43,6 @@ else
 fi
 [[ -f "${tarball}" ]] || die "tarball not found: ${tarball}"
 
-# The package's postinstall runs `playwright install chromium`.
 install_cmd=(npm install -g --omit=dev --prefix "${PREFIX}" "${tarball}")
 if [[ "${GRYPS_DRY_RUN:-}" == "1" ]]; then
   printf '%s\n' "${install_cmd[*]}"
@@ -54,6 +53,12 @@ log "installing into ${PREFIX}"
 mkdir -p "${PREFIX}/bin"
 "${install_cmd[@]}"
 [[ -x "${PREFIX}/bin/gryps" ]] || die "install finished but ${PREFIX}/bin/gryps is missing"
+
+# npm 11 can block the package's postinstall, so install Chromium here as well.
+playwright="${PREFIX}/lib/node_modules/gryps/node_modules/.bin/playwright"
+[[ -x "${playwright}" ]] || die "install finished but ${playwright} is missing"
+log "installing the Chromium that Gryps drives"
+"${playwright}" install chromium || die "Chromium install failed; run: ${playwright} install chromium"
 
 case ":${PATH}:" in
   *":${PREFIX}/bin:"*) ;;
