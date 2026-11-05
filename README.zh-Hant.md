@@ -27,6 +27,7 @@ Homebrew：
 
 ```sh
 brew tap daskinnyman/gryps https://github.com/daskinnyman/gryps-release
+brew trust --formula daskinnyman/gryps/gryps
 brew install gryps
 ```
 
