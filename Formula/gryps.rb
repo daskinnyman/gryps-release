@@ -1,9 +1,9 @@
 class Gryps < Formula
   desc "QA engineer skills and a small harness CLI for coding agents"
   homepage "https://github.com/daskinnyman/gryps-release"
-  url "https://github.com/daskinnyman/gryps-release/releases/download/v0.1.0/gryps-0.1.0.tgz"
-  sha256 "714702406ce399f4e579f3b9b0f4214841bb0ae6058c63a9d934b6f32d417fb2"
-  version "0.1.0"
+  url "https://github.com/daskinnyman/gryps-release/releases/download/v0.2.0/gryps-0.2.0.tgz"
+  sha256 "a185d0df779094be570f9ab4c9f7c9e473f20b50c94a59cc600f9ca262462d3d"
+  version "0.2.0"
   license "MIT"
 
   depends_on "node"
